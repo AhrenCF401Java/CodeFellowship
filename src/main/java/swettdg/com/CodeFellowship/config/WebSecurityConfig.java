@@ -1,6 +1,5 @@
-package swettdg.com.CodeFellowship;
+package swettdg.com.CodeFellowship.config;
 
-import com.mycode.securedemo.appuser.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
