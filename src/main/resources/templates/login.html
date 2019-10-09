@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <section th:replace="fragments/head :: headBootstrap"></section>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <label for="username" style="size:1px ; visibility: hidden">username</label><input type="text" name="username" placeholder="Username" id="username">
+        <label for="password" style="size:1px ; visibility: hidden">username</label><input type="text" name="password" placeholder="Password" id="password">
+        <input type="submit" placeholder="Login">
+    </form>
+</body>
+</html>
