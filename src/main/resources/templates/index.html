@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>CodeFellowship Home</title>
+        <section th:replace="fragments/head :: headBootstrap"></section>
+        <title>Code\Fellowship Home</title>
     </head>
     <header>
-        <span th:text="${username} "></span>
+        <section th:replace="fragments/header :: header"></section>
     </header>
     <body>
         <div class="container">
-
-
+            <h1>Welcome to Code\Fellowship</h1>
         </div>
     </body>
-    <footer></footer>
+    <footer>
+    </footer>
 </html>
