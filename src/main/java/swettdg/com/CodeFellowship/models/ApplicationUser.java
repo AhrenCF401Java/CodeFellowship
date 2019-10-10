@@ -1,19 +1,18 @@
 package swettdg.com.CodeFellowship.models;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+            @GeneratedValue(strategy = GenerationType.IDENTITY)
+            Long id;
 
     String username;
     String password;
@@ -21,6 +20,9 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     String dob;
     String bio;
+
+    @OneToMany(mappedBy = "creator")
+    List<Post> posts;
 
     public ApplicationUser(){};
 
@@ -31,6 +33,10 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
         this.dob = dob;
         this.bio = bio;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
 
@@ -67,5 +73,53 @@ public class ApplicationUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
