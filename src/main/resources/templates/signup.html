@@ -8,12 +8,12 @@
     <body>
         <h1>Sign\Up</h1>
         <form action="/signup" method="post">
-            <label for="username" style="size:1px ; visibility: hidden">username</label><input type="text" name="username" placeholder="Username" id="username">
-            <label for="password" style="size:1px ; visibility: hidden">password</label><input type="text" name="password" placeholder="Password" id="password">
-            <label for="firstName" style="size:1px ; visibility: hidden">first name</label><input type="text" name="firstName" placeholder="First Name" id="firstName">
-            <label for="lastName" style="size:1px ; visibility: hidden">last name</label><input type="text" name="lastName" placeholder="Last Name" id="lastName">
-            <label for="dob" style="size:1px ; visibility: hidden">birthday</label><input type="text" name="dob" placeholder="Birthday" id="dob">
-            <label for="bio" style="size:1px ; visibility: hidden">bio</label><textarea type="t" name="bio" wrap="hard" placeholder="Bio" id="bio"></textarea>
+            <label for="username" style="size:1px ; visibility: hidden">username</label><input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password" style="size:1px ; visibility: hidden">password</label><input type="text" name="password" placeholder="Password" id="password" required>
+            <label for="firstName" style="size:1px ; visibility: hidden">first name</label><input type="text" name="firstName" placeholder="First Name" id="firstName" required>
+            <label for="lastName" style="size:1px ; visibility: hidden">last name</label><input type="text" name="lastName" placeholder="Last Name" id="lastName" required>
+            <label for="dob" style="size:1px ; visibility: hidden">birthday</label><input type="text" name="dob" placeholder="Birthday" id="dob" required>
+            <label for="bio" style="size:1px ; visibility: hidden">bio</label><textarea  name="bio" wrap="hard" placeholder="Bio" id="bio" required></textarea>
             <input type="submit" placeholder="Sign Up!">
         </form>
     </body>

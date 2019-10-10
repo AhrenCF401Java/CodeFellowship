@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Login</h1>
+    <div th:if="${param.error}">Incorrect username / password!</div>
     <form action="/login" method="post">
         <label for="username" style="size:1px ; visibility: hidden">username</label><input type="text" name="username" placeholder="Username" id="username">
         <label for="password" style="size:1px ; visibility: hidden">username</label><input type="text" name="password" placeholder="Password" id="password">

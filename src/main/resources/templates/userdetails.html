@@ -6,7 +6,14 @@
     <title>User\Details</title>
 </head>
 <body>
-    <h1>User\Details</h1>
+    <h1>User\Details for [[${user.firstName}]] </h1>
+    <form method="post" action="/userdetails">
+        <label for="body" style="size:1px ; visibility: hidden">Enter a Post</label><textarea required name="body" wrap="hard" placeholder="Enter a Post" id="body"></textarea>
+        <input type="submit" value="Submit Post">
+    </form>
+    <ul th:each="post : ${user.posts}">
+        <li>[[${post}]]</li>
+    </ul>
 
 </body>
 </html>
