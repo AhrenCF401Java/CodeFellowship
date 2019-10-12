@@ -21,6 +21,9 @@ public class ApplicationUser implements UserDetails {
     String dob;
     String bio;
 
+    @ManyToMany
+
+
     @OneToMany(mappedBy = "creator")
     List<Post> posts;
 
