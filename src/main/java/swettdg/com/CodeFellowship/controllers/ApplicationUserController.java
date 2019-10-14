@@ -1,5 +1,6 @@
 package swettdg.com.CodeFellowship.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ApplicationUserController {
@@ -31,6 +33,7 @@ public class ApplicationUserController {
 
     @Autowired ApplicationUserRepository applicationUserRepository;
     @Autowired PostRepository postRepository;
+
 
     @PostMapping("/signup")
     public RedirectView createNewUser(String username, String password, String firstName, String lastName, String dob, String bio){
@@ -65,13 +68,54 @@ public class ApplicationUserController {
         return new RedirectView("/userdetails");
     }
 
-
-//
-    @GetMapping("/userdetails/{id}")
-    public String getUserDetailsPage(@PathVariable Long id, Principal p, Model m){
-        m.addAttribute("name", p);
-        return "userdetails" + id;
+    @GetMapping("allusers")
+    public String getAllUsers(Principal p, Model m){
+        m.addAttribute("user", p);
+        m.addAttribute( "users" ,applicationUserRepository.findAll());
+        return "allusers";
     }
+
+
+
+
+
+    @PostMapping("/follow/{id}")
+    public RedirectView setfollowUser(@PathVariable Long id, Principal p, Model m){
+        ApplicationUser curUser = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser viewedUser = applicationUserRepository.getOne(id);
+        curUser.followUser(viewedUser);
+        applicationUserRepository.save(curUser);
+        return new RedirectView("/viewedusers/{id}");
+    }
+
+
+
+    @GetMapping("/viewedusers/{id}")
+    public String getUserDetailsPage(@PathVariable Long id, Principal p, Model m){
+        m.addAttribute("user", applicationUserRepository.findByUsername(p.getName()));
+        m.addAttribute("viewedUser",applicationUserRepository.getOne(id));
+        return "viewedusers";
+    }
+
+
+    @GetMapping("/feed")
+    public String displayFeed(Principal p, Model m){
+        ApplicationUser curUser = applicationUserRepository.findByUsername(p.getName());
+        Set<ApplicationUser> followies = curUser.getFollowedUsers();
+        m.addAttribute("followies", followies);
+        return "feed";
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @GetMapping("/signup")
     public String getSignUpPage(){ return "signup";};

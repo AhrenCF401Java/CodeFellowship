@@ -5,15 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-    <section th:fragment="header">
-        <nav sec:authorize="isAnonymous()">
-            <a href="/login">Sign In</a>
-            <a href="/signup">Sign Up</a>
-        </nav>
-        <nav sec:authorize="isAuthenticated()">
-            <a href="/logout">Logout</a>
-        </nav>
-        <span sec:authorize="isAuthenticated()">Hello, <a href="/userdetails">[[${name}]]</a></span>
-    </section>
+    <header th:fragment="header">
+        <div class="container">
+            <nav sec:authorize="isAnonymous()">
+                <a href="/login">Sign In</a>
+                <a href="/signup">Sign Up</a>
+            </nav>
+            <nav sec:authorize="isAuthenticated()">
+                <a href="/">Home</a>
+                <a href="/allusers">All Users</a>
+                <a href="/feed">Post Feed</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
 </body>
 </html>
