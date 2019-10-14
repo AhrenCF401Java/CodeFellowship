@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>All\Users</title>
 </head>
+<section th:replace="fragments/header :: header"></section>
 <body>
-    <section th:each="user"
+    <ul th:each="user : ${users}">
+        <li><a th:href="'/viewedusers/'+${user.id}">[[${user.username}]]</a> </li>
+    </ul>
 </body>
 </html>

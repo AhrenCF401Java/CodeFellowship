@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <section th:replace="fragments/head :: headBootstrap"></section>
+    <meta charset="UTF-8">
+    <title>User\Details</title>
+</head>
+<section th:replace="fragments/header :: header"></section>
+<body>
+<h1>User\Details for [[${viewedUser.firstName}]] </h1>
+<form method="post" th:action="${'/follow/'+ viewedUser.id}">
+    <input type="submit" value="Follow User">
+</form>
+<ul th:each="post : ${viewedUser.posts}">
+    <li>[[${post}]]</li>
+</ul>
+</body>
+</html>
